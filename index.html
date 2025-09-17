@@ -3,184 +3,171 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>SkillSwap - Skill Listing</title>
+  <title>Online Bus Ticket Booking</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      max-width: 600px;
+      max-width: 720px;
       margin: 40px auto;
-      padding: 0 20px;
-      background: #f0f2f5;
+      background-color: #f0f2f5;
+      padding: 20px;
+      border-radius: 10px;
     }
-    h1 {
-      text
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>SkillSwap Booking Calendar</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      max-width: 400px;
-      margin: 40px auto;
-      padding: 0 20px;
-    }
-    h1 {
+    h1, h2 {
       text-align: center;
+      color: #333;
+    }
+    form, #results, #myBookings {
+      background: white;
+      padding: 20px 30px;
+      border-radius: 8px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+      margin-bottom: 30px;
     }
     label {
       display: block;
-      margin: 15px 0 5px;
+      margin-top: 15px;
+      font-weight: bold;
+      color: #555;
     }
-    input, select, button {
+    select, input[type="date"], input[type="number"] {
       width: 100%;
-      padding: 8px;
+      padding: 10px 12px;
+      margin-top: 6px;
       font-size: 16px;
-      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+    input[type="number"] {
+      max-width: 100px;
     }
     button {
-      cursor: pointer;
-      background-color: #4CAF50;
-      border: none;
+      margin-top: 25px;
+      width: 100%;
+      padding: 14px;
+      font-size: 18px;
+      background-color: #007bff;
       color: white;
-      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
       transition: background-color 0.3s ease;
     }
     button:hover {
-      background-color: #45a049;
+      background-color: #0056b3;
     }
-    .confirmation {
-      background-color: #d4edda;
-      border: 1px solid #c3e6cb;
-      padding: 10px;
-      color: #155724;
-      margin-top: 20px;
-      display: none;
-      border-radius: 4px;
+    .bus-item {
+      border-bottom: 1px solid #ddd;
+      padding: 12px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
-  </style>
-</head>
-<body>
-  <h1>Book Your Lesson</h1>
-  <form id="bookingForm">
-    <label for="date">Select Date:</label>
-    <input type="date" id="date" name="date" min="" required />
-
-    <label for="time">Select Time Slot:</label>
-    <select id="time" name="time" required>
-      <option value="">-- Choose a time slot --</option>
-      <option value="09:00">09:00 AM - 10:00 AM</option>
-      <option value="10:00">10:00 AM - 11:00 AM</option>
-      <option value="11:00">11:00 AM - 12:00 PM</option>
-      <option value="13:00">01:00 PM - 02:00 PM</option>
-      <option value="14:00">02:00 PM - 03:00 PM</option>
-      <option value="15:00">03:00 PM - 04:00 PM</option>
-    </select>
-
-    <button type="submit">Book Lesson</button>
-  </form>
-
-  <div id="confirmation" class="confirmat
-    <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>SkillSwap Reviews & Ratings</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      max-width: 600px;
-      margin: 40px auto;
-      padding: 0 20px;
-      background-color: #f9f9f9;
+    .bus-item:last-child {
+      border-bottom: none;
     }
-    h1 {
-      text-align: center;
-      margin-bottom: 30px;
+    .bus-info {
+      font-weight: bold;
       color: #333;
     }
-    .rating-stars {
-      display: flex;
-      flex-direction: row-reverse;
-      justify-content: center;
-      margin-bottom: 15px;
+    .bus-details {
+      color: #666;
+      font-size: 14px;
     }
-    .rating-stars input {
-      display: none;
-    }
-    .rating-stars label {
-      font-size: 2rem;
-      color: #ccc;
-      cursor: pointer;
-      transition: color 0.2s;
-      user-select: none;
-      margin: 0 5px;
-    }
-    .rating-stars input:checked ~ label,
-    .rating-stars label:hover,
-    .rating-stars label:hover ~ label {
-      color: #f39c12;
-    }
-    textarea {
-      width: 100%;
-      height: 100px;
-      padding: 10px;
-      font-size: 1rem;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-      resize: vertical;
-      margin-bottom: 15px;
-    }
-    button {
-      display: block;
-      width: 100%;
-      padding: 12px;
-      background-color: #4CAF50;
-      color: white;
-      font-size: 1.1rem;
+    .book-btn {
+      background-color: #28a745;
+      padding: 8px 16px;
       border: none;
-      border-radius: 5px;
+      color: white;
+      border-radius: 6px;
       cursor: pointer;
+      font-size: 14px;
       transition: background-color 0.3s ease;
     }
-    button:hover {
-      background-color: #45a049;
+    .book-btn:hover {
+      background-color: #1e7e34;
     }
-    .reviews-list {
-      margin-top: 40px;
-    }
-    .review-item {
-      background: white;
+    #confirmation {
+      margin-top: 20px;
+      background-color: #d4edda;
+      color: #155724;
       padding: 15px 20px;
-      border-radius: 8px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      margin-bottom: 20px;
+      border-radius: 6px;
+      display: none;
+      font-weight: bold;
+      text-align: center;
     }
-    .review-stars {
-      color: #f39c12;
-      font-size: 1.2rem;
-      margin-bottom: 8px;
+    #myBookings ul {
+      list-style-type: none;
+      padding-left: 0;
     }
-    .review-text {
-      font-size: 1rem;
-      color: #555;
-      white-space: pre-wrap;
+    #myBookings li {
+      background: #e9ecef;
+      margin-bottom: 10px;
+      padding: 12px 16px;
+      border-radius: 6px;
     }
   </style>
 </head>
 <body>
-  <h1>Leave a Review & Rating</h1>
-  
-  <form id="reviewForm">
-    <div class="rating-stars">
-      <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="5 stars">&#9733;</label>
-      <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="4 stars">&#9733;</label>
-      <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="3 stars">&#9733;</label>
-      <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="2 stars">&#9733;</label>
-      <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="1 star">&#9733;</label>
-    </div>
 
+  <h1>Online Bus Ticket Booking</h1>
+
+  <form id="bookingForm">
+    <label for="fromCity">From:</label>
+    <select id="fromCity" required>
+      <option value="" disabled selected>Select departure city</option>
+      <option value="New York">New York</option>
+      <option value="Washington DC">Washington DC</option>
+      <option value="Boston">Boston</option>
+      <option value="Philadelphia">Philadelphia</option>
+      <option value="Chicago">Chicago</option>
+    </select>
+
+    <label for="toCity">To:</label>
+    <select id="toCity" required>
+      <option value="" disabled selected>Select destination city</option>
+      <option value="New York">New York</option>
+      <option value="Washington DC">Washington DC</option>
+      <option value="Boston">Boston</option>
+      <option value="Philadelphia">Philadelphia</option>
+      <option value="Chicago">Chicago</option>
+    </select>
+
+    <label for="travelDate">Travel Date:</label>
+    <input type="date" id="travelDate" required min="" />
+
+    <label for="passengers">Passengers:</label>
+    <input type="number" id="passengers" required min="1" max="10" value="1" />
+
+    <label for="busType">Bus Type:</label>
+    <select id="busType" required>
+      <option value="" disabled selected>Select bus type</option>
+      <option value="AC">AC</option>
+      <option value="Non-AC">Non-AC</option>
+      <option value="Sleeper">Sleeper</option>
+      <option value="Volvo">Volvo</option>
+    </select>
+
+    <button type="submit">Search Buses</button>
+  </form>
+
+  <div id="results" style="display:none;">
+    <h2>Available Buses</h2>
+    <div id="busList"></div>
+  </div>
+
+  <div id="confirmation"></div>
+
+  <div id="myBookings" style="display:none;">
+    <h2>My Bookings</h2>
+    <ul id="bookingList"></ul>
+  </div>
+
+<script>
+  const dateInput = document.getElementById('travelDate');
+  const todayStr = new Date().toISOString().split('T')[0];
+  dateInput.setAttribute('min', todayStr);
+
+  const bookingForm = document.getElementBy
